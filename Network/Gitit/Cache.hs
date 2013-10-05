@@ -89,7 +89,6 @@ lookupModTime file = do
      then liftIO $ do
 #if MIN_VERSION_directory(1,2,0)
        modtime <- getModificationTime target
-       let contents = Nothing
 #else
        TOD secs _ <- getModificationTime target
        let modtime = posixSecondsToUTCTime $ fromIntegral secs

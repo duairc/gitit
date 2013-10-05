@@ -59,7 +59,7 @@ import Network.Gitit.Layout
 import Network.Gitit.Types
 import Network.Gitit.Feed (filestoreToXmlFeed, FeedConfig(..))
 import Network.Gitit.Util (orIfNull)
-import Network.Gitit.Cache (expireCachedFile, lookupCache, cacheContents, lookupModTime)
+import Network.Gitit.Cache (expireCachedFile, cacheContents, lookupModTime)
 import Network.Gitit.ContentTransformer (showRawPage, showFileAsText, showPage,
         exportPage, showHighlightedSource, preview, applyPreCommitPlugins)
 import Network.Gitit.Page (readCategories)
@@ -140,7 +140,6 @@ createPage = do
                                       pgPageName = page
                                     , pgTabs = []
                                     , pgTitle = "Create " ++ page ++ "?"
-									, pgModTime = "XXX"
                                     } $
                     p << [ stringToHtml ("There is no page '" ++ page ++
                               "'.  You may create the page by "),
