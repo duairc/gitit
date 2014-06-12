@@ -163,16 +163,15 @@ uploadForm = withData $ \(params :: Params) -> do
   let upForm = form ! [X.method "post", enctype "multipart/form-data"] <<
        fieldset <<
        [ p << [label ! [thefor "file"] << "File to upload:"
-              , br
               , afile "file" ! [value origPath] ]
-       , p << [ label ! [thefor "wikiname"] << "Name on wiki, including extension"
-              , noscript << " (leave blank to use the same filename)"
-              , stringToHtml ":"
-              , br
-              , textfield "wikiname" ! [value wikiname]
-              , primHtmlChar "nbsp"
-              , checkbox "overwrite" "yes"
-              , label ! [thefor "overwrite"] << "Overwrite existing file" ]
+       , p << [ label ! [thefor "wikiname"] <<
+                  [ stringToHtml "Name on wiki, including extension"
+                  , noscript << " (leave blank to use the same filename)"
+                  , stringToHtml ":"
+                  ]
+              , textfield "wikiname" ! [value wikiname] ]
+       , p << [ label ! [thefor "overwrite"] << "Overwrite existing file:"
+              , checkbox "overwrite" "yes" ]
        , p << [ label ! [thefor "logMsg"] << "Description of content or changes:"
               , br
               , textfield "logMsg" ! [size "60", value logMsg]
